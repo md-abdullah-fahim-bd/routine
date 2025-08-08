@@ -25,6 +25,14 @@
             --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
         }
 
+        /* Dark mode variables (if you implement dark mode later) */
+        .dark {
+            --text-color: var(--dark-text-color);
+            --bg-color: var(--dark-bg-color);
+            --card-bg: var(--dark-card-bg);
+            --border-color: var(--dark-border-color);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -59,9 +67,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at 40% 60%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
-                        radial-gradient(circle at 60% 40%, rgba(233, 73, 184, 0.15) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 80%, rgba(16, 185, 129, 0.15) 0%, transparent 50%);
+            background: radial-gradient(circle at 40% 60%, rgba(99, 102, 241, 0.15) 0%, transparent 50%), radial-gradient(circle at 60% 40%, rgba(233, 73, 184, 0.15) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(16, 185, 129, 0.15) 0%, transparent 50%);
             animation: float 25s ease-in-out infinite;
         }
 
@@ -80,14 +86,18 @@
 
         /* Header styles */
         .header {
-            background: rgba(255, 255, 255, 0.95);
+            background: var(--card-bg);
             backdrop-filter: blur(20px);
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
-            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+            border-bottom: 1px solid var(--border-color);
             transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            box-shadow: var(--shadow-md);
         }
 
         .header .container {
@@ -417,13 +427,12 @@
             .hamburger-menu {
                 display: block;
             }
-
             .nav-list {
                 position: fixed;
                 top: 70px;
                 left: 0;
                 width: 100%;
-                background: rgba(255, 255, 255, 0.98);
+                background: var(--card-bg);
                 backdrop-filter: blur(20px);
                 flex-direction: column;
                 padding: 2rem 0;
@@ -433,25 +442,20 @@
                 transition: all 0.3s ease;
                 box-shadow: var(--shadow-lg);
             }
-
             .nav-list.active {
                 transform: translateY(0);
                 opacity: 1;
                 visibility: visible;
             }
-
             .page-title h1 {
                 font-size: 2.5rem;
             }
-
             .routine-grid {
                 grid-template-columns: 1fr;
             }
-
             .routine-card {
                 padding: 2rem 1.5rem;
             }
-
             .main-content {
                 padding: 5rem 1rem 2rem;
             }
@@ -472,7 +476,6 @@
 </head>
 <body>
     <div class="enhanced-background"></div>
-
     <header class="header" id="header">
         <div class="container">
             <a href="index.html" class="logo-link">
@@ -502,23 +505,19 @@
             </nav>
         </div>
     </header>
-
     <main class="main-content">
         <div class="container">
             <div class="page-title">
                 <h1 data-en="My Routine" data-bn="আমার রুটিন">My Routine</h1>
                 <p data-en="My daily class schedule and coaching routine" data-bn="আমার দৈনিক ক্লাসের সময়সূচী এবং কোচিং রুটিন">My daily class schedule and coaching routine</p>
             </div>
-
             <div class="today-highlight" id="todayHighlight">
                 <h3 data-en="Today's Schedule" data-bn="আজকের সময়সূচী">Today's Schedule</h3>
                 <p id="todayScheduleText"></p>
             </div>
-
             <div class="routine-grid">
                 <div class="routine-card">
                     <h2 class="routine-card-title" data-en="Monjur Hossain Coaching Center" data-bn="Monjur Hossain Coaching Center">Monjur Hossain Coaching Center</h2>
-
                     <div class="routine-subsection">
                         <h3 class="subsection-title" data-en="Math" data-bn="গণিত">Math</h3>
                         <div class="marquee-container">
@@ -534,7 +533,6 @@
                             <li data-en="Thursday - 7:00 A.M." data-bn="বৃহস্পতিবার - সকাল ৭:০০">Thursday - 7:00 A.M.</li>
                         </ul>
                     </div>
-
                     <div class="routine-subsection">
                         <h3 class="subsection-title" data-en="Group Subjects" data-bn="গ্রুপ বিষয়">Group Subjects</h3>
                         <div class="marquee-container">
@@ -551,7 +549,6 @@
                         </ul>
                     </div>
                 </div>
-
                 <div class="routine-card">
                     <h2 class="routine-card-title" data-en="English Coaching (Mr. Partha Chandra Ascharjee)" data-bn="ইংরেজি কোচিং (Partha Chandra Ascharjee Coaching Center)">English Coaching (Mr. Partha Chandra Ascharjee)</h2>
                     <div class="marquee-container">
@@ -559,7 +556,7 @@
                     </div>
                     <ul class="routine-list">
                         <li data-en="Friday - OFF" data-bn="শুক্রবার - বন্ধ">Friday - OFF</li>
-                        <li data-en="Saturday - 10:00 A.M." data-bn="শনিবার - সকাল ১০:০০">Saturday - ১০:00 A.M.</li>
+                        <li data-en="Saturday - 10:00 A.M." data-bn="শনিবার - সকাল ১০:০০">Saturday - 10:00 A.M.</li>
                         <li data-en="Sunday - OFF" data-bn="রবিবার - বন্ধ">Sunday - OFF</li>
                         <li data-en="Monday - 9:00 A.M." data-bn="সোমবার - সকাল ৯:০০">Monday - 9:00 A.M.</li>
                         <li data-en="Tuesday - OFF" data-bn="মঙ্গলবার - বন্ধ">Tuesday - OFF</li>
@@ -570,13 +567,21 @@
             </div>
         </div>
     </main>
-
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Header scroll effect
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 0) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
             // Mobile menu functionality
             const hamburger = document.getElementById('hamburger');
             const navList = document.getElementById('navList');
-
             hamburger.addEventListener('click', () => {
                 navList.classList.toggle('active');
             });
@@ -584,6 +589,33 @@
             // Language toggle functionality
             const langToggle = document.getElementById('langToggle');
             let currentLanguage = localStorage.getItem('language') || 'en';
+
+            const routineData = {
+                en: {
+                    days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+                    math: {
+                        0: 'OFF', 1: '7:00 A.M.', 2: 'OFF', 3: '7:00 A.M.', 4: '7:00 A.M.', 5: '9:20 A.M.', 6: '7:00 A.M.'
+                    },
+                    group: {
+                        0: 'OFF', 1: '7:40 A.M.', 2: '9:10 A.M.', 3: '7:40 A.M.', 4: '7:40 A.M.', 5: '8:25 A.M.', 6: '7:40 A.M.'
+                    },
+                    english: {
+                        0: 'OFF', 1: '9:00 A.M.', 2: 'OFF', 3: '9:00 A.M.', 4: '10:00 A.M.', 5: '10:00 A.M.', 6: '9:00 A.M.'
+                    }
+                },
+                bn: {
+                    days: ['রবিবার', 'সোমবার', 'মঙ্গলবার', 'বুধবার', 'বৃহস্পতিবার', 'শুক্রবার', 'শনিবার'],
+                    math: {
+                        0: 'বন্ধ', 1: 'সকাল ৭:০০', 2: 'বন্ধ', 3: 'সকাল ৭:০০', 4: 'সকাল ৭:০০', 5: 'সকাল ৯:২০', 6: 'সকাল ৭:০০'
+                    },
+                    group: {
+                        0: 'বন্ধ', 1: 'সকাল ৭:৪০', 2: 'সকাল ৯:১০', 3: 'সকাল ৭:৪০', 4: 'সকাল ৭:৪০', 5: 'সকাল ৮:২৫', 6: 'সকাল ৭:৪০'
+                    },
+                    english: {
+                        0: 'বন্ধ', 1: 'সকাল ৯:০০', 2: 'বন্ধ', 3: 'সকাল ৯:০০', 4: 'সকাল ১০:০০', 5: 'সকাল ১০:০০', 6: 'সকাল ৯:০০'
+                    }
+                }
+            };
 
             function updateTexts() {
                 document.querySelectorAll('[data-en]').forEach(element => {
@@ -598,7 +630,6 @@
                     const bnTitle = titleElement.getAttribute('data-bn');
                     titleElement.textContent = currentLanguage === 'en' ? enTitle : bnTitle;
                 }
-
                 updateRoutineBanners();
                 updateTodaySchedule();
             }
@@ -609,45 +640,15 @@
                 updateTexts();
             });
 
-            updateTexts();
-
             // Routine functionality
             function updateRoutineBanners() {
-                const routineData = {
-                    en: {
-                        days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-                        math: {
-                            0: 'OFF', 1: '7:00 A.M.', 2: 'OFF', 3: '7:00 A.M.', 4: '7:00 A.M.', 5: 'OFF', 6: '7:00 A.M.'
-                        },
-                        group: {
-                            0: 'OFF', 1: '7:40 A.M.', 2: '9:10 A.M.', 3: '7:40 A.M.', 4: '7:40 A.M.', 5: '8:40 A.M.', 6: '7:40 A.M.'
-                        },
-                        english: {
-                            0: 'OFF', 1: '9:00 A.M.', 2: 'OFF', 3: '9:00 A.M.', 4: '10:00 A.M.', 5: 'OFF', 6: '10:00 A.M.'
-                        }
-                    },
-                    bn: {
-                        days: ['রবিবার', 'সোমবার', 'মঙ্গলবার', 'বুধবার', 'বৃহস্পতিবার', 'শুক্রবার', 'শনিবার'],
-                        math: {
-                            0: 'বন্ধ', 1: 'সকাল ৭:০০', 2: 'বন্ধ', 3: 'সকাল ৭:০০', 4: 'সকাল ৭:০০', 5: 'বন্ধ, 6: 'সকাল ৭:০০'
-                        },
-                        group: {
-                            0: 'বন্ধ', 1: 'সকাল ৭:৪০', 2: 'সকাল ৯:১০', 3: 'সকাল ৭:৪০', 4: 'সকাল ৭:৪০', 5: 'সকাল ৮:৪০', 6: 'সকাল ৭:৪০'
-                        },
-                        english: {
-                            0: 'সকাল ৯:০০', 1: 'সকাল ৯:০০', 2: 'বন্ধ', 3: 'সকাল ৯:০০', 4: 'সকাল ৯:০০', 5: 'বন্ধ, 6: 'সকাল ১০:০০'
-                        }
-                    }
-                };
-
                 const today = new Date();
                 const tomorrow = new Date(today);
                 tomorrow.setDate(today.getDate() + 1);
                 const tomorrowDayIndex = tomorrow.getDay();
-
                 const langData = routineData[currentLanguage];
-                const tomorrowDayName = langData.days[tomorrowDayIndex];
 
+                const tomorrowDayName = langData.days[tomorrowDayIndex];
                 const mathTime = langData.math[tomorrowDayIndex];
                 const groupTime = langData.group[tomorrowDayIndex];
                 const englishTime = langData.english[tomorrowDayIndex];
@@ -657,71 +658,38 @@
                 const englishBanner = document.getElementById('english-tomorrow-banner');
 
                 if (mathBanner) {
-                    mathBanner.textContent = currentLanguage === 'en'
-                        ? `Tomorrow (${tomorrowDayName}) Math Coaching will be at ${mathTime}`
-                        : `আগামীকাল (${tomorrowDayName}) গণিত কোচিং হবে ${mathTime} টায়`;
+                    mathBanner.textContent = currentLanguage === 'en' ? `Tomorrow (${tomorrowDayName}) Math Coaching will be at ${mathTime}` : `আগামীকাল (${tomorrowDayName}) গণিত কোচিং হবে ${mathTime} টায়`;
                 }
                 if (groupBanner) {
-                    groupBanner.textContent = currentLanguage === 'en'
-                        ? `Tomorrow (${tomorrowDayName}) Group Subjects Coaching will be at ${groupTime}`
-                        : `আগামীকাল (${tomorrowDayName}) গ্রুপ বিষয় কোচিং হবে ${groupTime} টায়`;
+                    groupBanner.textContent = currentLanguage === 'en' ? `Tomorrow (${tomorrowDayName}) Group Subjects Coaching will be at ${groupTime}` : `আগামীকাল (${tomorrowDayName}) গ্রুপ বিষয় কোচিং হবে ${groupTime} টায়`;
                 }
                 if (englishBanner) {
-                    englishBanner.textContent = currentLanguage === 'en'
-                        ? `Tomorrow (${tomorrowDayName}) English Coaching will be at ${englishTime}`
-                        : `আগামীকাল (${tomorrowDayName}) ইংরেজি কোচিং হবে ${englishTime} টায়`;
+                    englishBanner.textContent = currentLanguage === 'en' ? `Tomorrow (${tomorrowDayName}) English Coaching will be at ${englishTime}` : `আগামীকাল (${tomorrowDayName}) ইংরেজি কোচিং হবে ${englishTime} টায়`;
                 }
             }
 
             function updateTodaySchedule() {
-                const routineData = {
-                    en: {
-                        days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-                        math: {
-                            0: 'OFF', 1: '7:00 A.M.', 2: 'OFF', 3: '7:00 A.M.', 4: '7:00 A.M.', 5: '9:20 A.M.', 6: '7:00 A.M.'
-                        },
-                        group: {
-                            0: 'OFF', 1: '7:40 A.M.', 2: '9:10 A.M.', 3: '7:40 A.M.', 4: '7:40 A.M.', 5: '8:25 A.M.', 6: '7:40 A.M.'
-                        },
-                        english: {
-                            0: 'OFF', 1: '9:00 A.M.', 2: 'OFF', 3: '9:00 A.M.', 4: '10:00 A.M.', 5: '10:00 A.M.', 6: '9:00 A.M.'
-                        }
-                    },
-                    bn: {
-                        days: ['রবিবার', 'সোমবার', 'মঙ্গলবার', 'বুধবার', 'বৃহস্পতিবার', 'শুক্রবার', 'শনিবার'],
-                        math: {
-                            0: 'বন্ধ', 1: 'সকাল ৭:০০', 2: 'বন্ধ', 3: 'সকাল ৭:০০', 4: 'সকাল ৭:০০', 5: 'সকাল ৯:২০', 6: 'সকাল ৭:০০'
-                        },
-                        group: {
-                            0: 'বন্ধ', 1: 'সকাল ৭:৪০', 2: 'সকাল ৯:১০', 3: 'সকাল ৭:৪০', 4: 'সকাল ৭:৪০', 5: 'সকাল ৮:২৫', 6: 'সকাল ৭:৪০'
-                        },
-                        english: {
-                            0: 'বন্ধ', 1: 'সকাল ৯:০০', 2: 'বন্ধ', 3: 'সকাল ৯:০০', 4: 'সকাল ১০:০০', 5: 'সকাল ১০:০০', 6: 'সকাল ৯:০০'
-                        }
-                    }
-                };
-
                 const today = new Date();
                 const todayIndex = today.getDay();
                 const langData = routineData[currentLanguage];
-                const todayName = langData.days[todayIndex];
 
+                const todayName = langData.days[todayIndex];
                 const mathTime = langData.math[todayIndex];
                 const groupTime = langData.group[todayIndex];
                 const englishTime = langData.english[todayIndex];
 
                 const scheduleText = document.getElementById('todayScheduleText');
-                
-                if (currentLanguage === 'en') {
-                    scheduleText.innerHTML = `Today is ${todayName}<br>Math: ${mathTime} | Group: ${groupTime} | English: ${englishTime}`;
-                } else {
-                    scheduleText.innerHTML = `আজ ${todayName}<br>গণিত: ${mathTime} | গ্রুপ: ${groupTime} | ইংরেজি: ${englishTime}`;
+                if (scheduleText) {
+                    if (currentLanguage === 'en') {
+                        scheduleText.innerHTML = `Today is ${todayName}<br>Math: ${mathTime} | Group: ${groupTime} | English: ${englishTime}`;
+                    } else {
+                        scheduleText.innerHTML = `আজ ${todayName}<br>গণিত: ${mathTime} | গ্রুপ: ${groupTime} | ইংরেজি: ${englishTime}`;
+                    }
                 }
             }
 
             // Initial updates
-            updateRoutineBanners();
-            updateTodaySchedule();
+            updateTexts(); // Call this first to set initial language and then update banners/schedule
         });
     </script>
 </body>
